@@ -1,0 +1,6 @@
+C:\Users\NIK717\Documents\AAAfile\Programmers\Prog\game_inventory_project\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+C:\Users\NIK717\Documents\AAAfile\Programmers\Prog\game_inventory_project\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+C:\Users\NIK717\Documents\AAAfile\Programmers\Prog\game_inventory_project\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+C:\Users\NIK717\Documents\AAAfile\Programmers\Prog\game_inventory_project\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache
+C:\Users\NIK717\Documents\AAAfile\Programmers\Prog\game_inventory_project\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+C:\Users\NIK717\Documents\AAAfile\Programmers\Prog\game_inventory_project\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
