@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -119,11 +120,28 @@ namespace GameInventoryProject
                     break;
                 }
             }
-            Console.WriteLine("Введите вес(г)");
-            int weightItem = int.Parse(Console.ReadLine());
 
-            Console.WriteLine("Введите стоимость");
-            int costItem = int.Parse(Console.ReadLine());
+            int weightItem = 0;
+            while (true)
+            {
+                Console.WriteLine("Введите вес(г)");
+
+                if (int.TryParse(Console.ReadLine(), out weightItem)) break;
+                Console.WriteLine("Неверно введенные данные");
+                
+            }
+
+            int costItem = 0;
+            while (true)
+            {
+                Console.WriteLine("Введите стоимость");
+
+                if (int.TryParse(Console.ReadLine(), out costItem)) break;
+                Console.WriteLine("Неверно введенные данные");
+
+            }
+            
+            
 
             NameItem[Count] = newItemName;
             WeightItem[Count] = weightItem;

@@ -4,3 +4,10 @@ C:\Users\NIK717\Documents\AAAfile\Programmers\Prog\game_inventory_project\Consol
 C:\Users\NIK717\Documents\AAAfile\Programmers\Prog\game_inventory_project\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache
 C:\Users\NIK717\Documents\AAAfile\Programmers\Prog\game_inventory_project\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
 C:\Users\NIK717\Documents\AAAfile\Programmers\Prog\game_inventory_project\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
+D:\ProjectProg\game_inventory_project\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+D:\ProjectProg\game_inventory_project\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+D:\ProjectProg\game_inventory_project\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+D:\ProjectProg\game_inventory_project\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.csproj.AssemblyReference.cache
+D:\ProjectProg\game_inventory_project\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.csproj.CoreCompileInputs.cache
+D:\ProjectProg\game_inventory_project\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+D:\ProjectProg\game_inventory_project\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
