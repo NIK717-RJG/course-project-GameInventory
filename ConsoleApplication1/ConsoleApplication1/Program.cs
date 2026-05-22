@@ -99,7 +99,7 @@ namespace GameInventoryProject
             {
                 Console.WriteLine("Введите название предмета");
                 newItemName = Console.ReadLine();
-
+                
                 bool isDuplicate = false;
                 for (int i = 0; i < Count; i++)
                 {
@@ -126,7 +126,11 @@ namespace GameInventoryProject
             {
                 Console.WriteLine("Введите вес(г)");
 
-                if (int.TryParse(Console.ReadLine(), out weightItem)) break;
+                if (int.TryParse(Console.ReadLine(), out weightItem))
+                {
+                    if (weightItem > 0) { break;}
+                }
+                
                 Console.WriteLine("Неверно введенные данные");
                 
             }
@@ -136,7 +140,10 @@ namespace GameInventoryProject
             {
                 Console.WriteLine("Введите стоимость");
 
-                if (int.TryParse(Console.ReadLine(), out costItem)) break;
+                if (int.TryParse(Console.ReadLine(), out costItem))
+                {
+                    if (costItem > 0) { break;}
+                }
                 Console.WriteLine("Неверно введенные данные");
 
             }
