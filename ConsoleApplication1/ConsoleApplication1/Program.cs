@@ -7,12 +7,23 @@ using System.Threading.Tasks;
 
 namespace GameInventoryProject
 {
+    public struct Item
+    {
+        public string Name { get; set; }
+        public int Weight { get; set; }
+        public int Cost { get; set; }
+
+        public Item(string name, int weight, int cost)
+        {
+            Name = name;
+            Weight = weight;
+            Cost = cost;
+        }
+    }
     class Program
     {
         const int MaxValue = 100;
-        static string[] NameItem = new string[MaxValue];
-        static int[] WeightItem = new int[MaxValue];
-        static int[] CostItem = new int[MaxValue];
+        static Item[] IdItem = new Item[MaxValue];
         static int Count = 0;
         
 
@@ -76,7 +87,7 @@ namespace GameInventoryProject
             for (int i = 0; i < Count; i++)
             {
                 Console.WriteLine("{0,-10} {1, -10} {2, -10}",
-                    NameItem[i], WeightItem[i], CostItem[i]);
+                    IdItem[i].Name, IdItem[i].Weight, IdItem[i].Cost);
             }
 
             Console.WriteLine(new string('-', 45));
@@ -104,7 +115,7 @@ namespace GameInventoryProject
                     bool isDuplicate = false;
                     for (int i = 0; i < Count; i++)
                     {
-                        if (NameItem[i] == newItemName)
+                        if (IdItem[i].Name == newItemName)
                         {
                             isDuplicate = true;
                             break;
@@ -149,12 +160,7 @@ namespace GameInventoryProject
                 Console.WriteLine("Неверно введенные данные");
 
             }
-            
-            
-
-            NameItem[Count] = newItemName;
-            WeightItem[Count] = weightItem;
-            CostItem[Count] = costItem;
+            IdItem[Count] = new Item(newItemName, weightItem, costItem);
             Count++;
             Console.WriteLine("Запись добавлена");
         }
