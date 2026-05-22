@@ -99,26 +99,28 @@ namespace GameInventoryProject
             {
                 Console.WriteLine("Введите название предмета");
                 newItemName = Console.ReadLine();
-                
-                bool isDuplicate = false;
-                for (int i = 0; i < Count; i++)
+                if (newItemName != string.Empty)
                 {
-                    if (NameItem[i] == newItemName)
+                    bool isDuplicate = false;
+                    for (int i = 0; i < Count; i++)
                     {
-                        isDuplicate = true;
-                        break;
+                        if (NameItem[i] == newItemName)
+                        {
+                            isDuplicate = true;
+                            break;
+                        }
+
                     }
 
-                }
-
-                if (isDuplicate)
-                {
-                    Console.WriteLine("Данный предмет уже существует");
-                }
-                else
-                {
-                    break;
-                }
+                    if (isDuplicate)
+                    {
+                        Console.WriteLine("Данный предмет уже существует");
+                    }
+                    else
+                    {
+                        break;
+                    }
+                } Console.WriteLine("Неккоректное значение");
             }
 
             int weightItem = 0;
