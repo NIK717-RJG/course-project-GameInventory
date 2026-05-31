@@ -23,7 +23,6 @@ namespace GameInventoryProject
     class Program
     {
         const int MaxValue = 100;
-        static Item[] IdItem = new Item[MaxValue];
         static int Count = 0;
         
 
@@ -38,6 +37,7 @@ namespace GameInventoryProject
 
         static void Main(string[] args)
         {
+            List<Item> items = new List<Item>(MaxValue); 
             Console.Title = "Управление инвентарём";
             bool isRunning = true;
             while (isRunning)
@@ -49,11 +49,11 @@ namespace GameInventoryProject
                 switch (choise)
                 {
                     case "1":
-                        ViewItems();
+                        ViewItems(items);
                         Console.ReadKey(); 
                         break;
                     case "2":
-                        AddItem();
+                        AddItem(items);
                         Console.ReadKey();
                         break;
                     case "3":
@@ -71,11 +71,11 @@ namespace GameInventoryProject
 
         }
 
-        static void ViewItems()
+        static void ViewItems(List<Item> items)
         {
             Console.WriteLine("Список предметов");
 
-            if (Count == 0)
+            if (items.Count == 0)
             {
                 Console.WriteLine("Список предметов пуст");
                 return;
@@ -84,17 +84,17 @@ namespace GameInventoryProject
             Console.WriteLine("{0,-10} {1, -10} {2, -10}", "Приедмет", "Вес(г)", "Стоимость");
             Console.WriteLine(new string('-', 45));
 
-            for (int i = 0; i < Count; i++)
+            foreach (var item in items)
             {
                 Console.WriteLine("{0,-10} {1, -10} {2, -10}",
-                    IdItem[i].Name, IdItem[i].Weight, IdItem[i].Cost);
+                    item.Name, item.Weight, item.Cost);
             }
 
             Console.WriteLine(new string('-', 45));
-            Console.WriteLine($"Количество записей {Count}");
+            Console.WriteLine($"Количество записей {items.Count}");
         }
 
-        static void AddItem()
+        static void AddItem(List<Item> newItem)
         {
             Console.WriteLine("Добавить предмет");
 
@@ -113,9 +113,9 @@ namespace GameInventoryProject
                 if (newItemName != string.Empty)
                 {
                     bool isDuplicate = false;
-                    for (int i = 0; i < Count; i++)
+                    foreach (var item in newItem)
                     {
-                        if (IdItem[i].Name == newItemName)
+                        if (item.Name == newItemName)
                         {
                             isDuplicate = true;
                             break;
@@ -160,8 +160,8 @@ namespace GameInventoryProject
                 Console.WriteLine("Неверно введенные данные");
 
             }
-            IdItem[Count] = new Item(newItemName, weightItem, costItem);
-            Count++;
+            newItem.Add(new Item(newItemName, weightItem, costItem));
+            
             Console.WriteLine("Запись добавлена");
         }
         
