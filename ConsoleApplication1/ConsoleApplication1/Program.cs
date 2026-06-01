@@ -92,6 +92,30 @@ namespace GameInventoryProject
 
             Console.WriteLine(new string('-', 45));
             Console.WriteLine($"Количество записей {items.Count}");
+
+            ShowInventoryMenu();
+            bool isRunning = true;
+            while (isRunning)
+            {
+                string choise = Console.ReadLine();
+                switch(choise)
+                {
+                    case "1":
+                        ItemDelete(items);
+                        isRunning = false;
+                        break;
+                    case "2":
+                        EditItem(items);
+                        isRunning=false; 
+                        break;
+                    case "3":
+                        isRunning = false;
+                        break;
+                    default:
+                        Console.WriteLine("Вы ввели неправильную команду!");
+                        break;
+                }
+            }
         }
 
         static void AddItem(List<Item> newItem)
@@ -164,6 +188,110 @@ namespace GameInventoryProject
             
             Console.WriteLine("Запись добавлена");
         }
+
+        static void ShowInventoryMenu()
+        {
+            Console.WriteLine("\n======== Управение инвентарем ========");
+            Console.WriteLine("1. Удалить предмет");
+            Console.WriteLine("2. Редактирование предмета");
+            Console.WriteLine("3. Выход из инвентаря");
+            Console.WriteLine("Выберите действия");
+        }
+
+        static void ItemDelete(List<Item> item)
+        {
+            Console.WriteLine("Введите название предмета:");
+            string nameItem = Console.ReadLine();
+            int index = item.FindIndex(i => i.Name == nameItem);
+            if (index != -1)
+            {
+                item.RemoveAt(index);
+                Console.WriteLine($"Предмет успешно удален");
+                
+            }
+            else { Console.WriteLine("Предмет не найден"); }
+        }
+
+        static void EditItem(List<Item> item)
+        {
+            Console.WriteLine("Введите название предмета: ");
+            string searchName = Console.ReadLine();
+            int index = item.FindIndex(i =>i.Name == searchName);
+
+            if (index == -1)
+            {
+                Console.WriteLine("Предмет не найден");
+                return;
+            }
+
+            Item currentItem = item[index];
+            Console.WriteLine($"Редактирование предмета: {currentItem.Name} {currentItem.Weight} {currentItem.Cost}");
+
+            //Изменение названия
+            string newName = string.Empty;
+            while(true)
+            {
+                Console.WriteLine("Введите новое название (Enter - для пропуска)");
+                string input = Console.ReadLine();
+
+                if (string.IsNullOrEmpty(input))
+                {
+                    newName = currentItem.Name;
+                    break;
+                }
+                if (input != currentItem.Name && item.Any(i => i.Name == input))
+                {
+                    Console.WriteLine("Предмет с таким названием существует");
+                }
+                else
+                {
+                    newName = input;
+                    break;
+                }
+            }
+
+            //Изменение веса
+            int newWeight = 0;
+            while (true)
+            {
+                Console.WriteLine("Введите новый вес(г) (Enter - для пропуска)");
+                string input = Console.ReadLine();
+
+                if (string.IsNullOrEmpty(input))
+                {
+                    newWeight = currentItem.Weight;
+                    break;
+                }
+                if (int.TryParse(input, out newWeight) && newWeight > 0)
+                {
+                    break;
+                }
+                Console.WriteLine("Неккоректный ввод (Должно быть число и больше нуля)");
+            }
+
+            //Изменеине стоимости
+            int newCost = 0;
+            while (true)
+            {
+                Console.WriteLine("Введите новою стоимость (Enter - для пропуска)");
+                string input = Console.ReadLine() ;
+
+                if (string.IsNullOrEmpty (input))
+                {
+                    newCost = currentItem.Cost;
+                    break;
+                }
+                if (int.TryParse(input, out newCost) && newCost > 0)
+                {
+                    break;
+                }
+                Console.WriteLine("Неккоректный ввод (Должно быть число и больше нуля)");
+            }
+
+            item[index] = new Item(newName, newWeight, newCost);
+            Console.WriteLine("Запись успешна изменина");
+        }
+        
         
     }
 }
