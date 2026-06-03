@@ -32,7 +32,8 @@ namespace GameInventoryProject
             Console.WriteLine("1. Просмотр всех предметов");
             Console.WriteLine("2. Добавить предмет");
             Console.WriteLine("3. Поиск и фильтрация");
-            Console.WriteLine("4. Выход");
+            Console.WriteLine("4. Сортировка инвенторя");
+            Console.WriteLine("5. Выход");
             Console.WriteLine("Выберите действия");
         }
 
@@ -62,6 +63,10 @@ namespace GameInventoryProject
                         Console.ReadKey();
                         break;
                     case "4":
+                        SortItems(items);
+                        Console.ReadKey();
+                        break;
+                    case "5":
                         isRunning = false;
                         Console.Write("Программа завершена");
                         break;
@@ -358,6 +363,41 @@ namespace GameInventoryProject
             }
 
             PrintTable(filteredList);
+        }
+
+        static void SortItems(List<Item> items)
+        {
+            Console.Clear();
+            Console.WriteLine("======== Сортировка инвенторя ========");
+
+            if (items.Count == 0)
+            {
+                Console.WriteLine("Инвентарь пуст");
+                return;
+            }
+
+            Console.WriteLine("1. Сортировка по Весу (возрастанию)");
+            Console.WriteLine("2. Сортировка по стоимости (убыванию)");
+            Console.WriteLine("Выберите вариант: ");
+            string choice = Console.ReadLine();
+            List<Item> sortList = new List<Item>();
+
+            switch (choice)
+            {
+                case "1":
+                    sortList = items.OrderBy(i => i.Weight).ToList();
+                    Console.WriteLine("Инвентарь отсортирован по весу");
+                    break;
+                case "2":
+                    sortList = items.OrderByDescending(i => i.Cost).ToList();
+                    Console.WriteLine("Инвентарь отсортирован по стоимости");
+                    break;
+                default:
+                    Console.WriteLine("Некорректный ввод");
+                    break;
+            }
+
+            PrintTable(sortList);
         }
         
         
