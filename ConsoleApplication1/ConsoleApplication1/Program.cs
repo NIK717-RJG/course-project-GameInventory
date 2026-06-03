@@ -71,9 +71,9 @@ namespace GameInventoryProject
 
         }
 
-        static void ViewItems(List<Item> items)
+        static void PrintTable(List<Item> items)
         {
-            Console.WriteLine("Список предметов");
+            
 
             if (items.Count == 0)
             {
@@ -92,6 +92,20 @@ namespace GameInventoryProject
 
             Console.WriteLine(new string('-', 45));
             Console.WriteLine($"Количество записей {items.Count}");
+        }
+
+        static void ViewItems(List<Item> items)
+        {
+            Console.Clear ();
+            Console.WriteLine("Список предметов");
+
+            if (items.Count == 0)
+            {
+                Console.WriteLine("Список предметов пуст");
+                return;
+            }
+
+            PrintTable(items);
 
             ShowInventoryMenu();
             bool isRunning = true;
