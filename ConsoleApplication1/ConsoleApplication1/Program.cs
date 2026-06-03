@@ -31,7 +31,8 @@ namespace GameInventoryProject
             Console.WriteLine("======== Система инвентаря ========");
             Console.WriteLine("1. Просмотр всех предметов");
             Console.WriteLine("2. Добавить предмет");
-            Console.WriteLine("3. Выход");
+            Console.WriteLine("3. Поиск и фильтрация");
+            Console.WriteLine("4. Выход");
             Console.WriteLine("Выберите действия");
         }
 
@@ -57,6 +58,10 @@ namespace GameInventoryProject
                         Console.ReadKey();
                         break;
                     case "3":
+                        SearchItems(items);
+                        Console.ReadKey();
+                        break;
+                    case "4":
                         isRunning = false;
                         Console.Write("Программа завершена");
                         break;
@@ -304,6 +309,55 @@ namespace GameInventoryProject
 
             item[index] = new Item(newName, newWeight, newCost);
             Console.WriteLine("Запись успешна изменина");
+        }
+
+        static void SearchItems(List<Item> items)
+        {
+            Console.Clear();
+            Console.WriteLine("======== Поиск и фильтрация ========");
+
+            if (items.Count == 0)
+            {
+                Console.WriteLine("Инвентарь пуст");
+                return;
+            }
+
+            Console.WriteLine("1. Поиск по названию");
+            Console.WriteLine("2. Фильтрация по максимальной стоимости");
+            Console.WriteLine("Выберите вариант: ");
+            string choice = Console.ReadLine();
+
+            List<Item> filteredList = new List<Item>();
+
+            switch(choice)
+            {
+                case "1":
+                    Console.WriteLine("Введите название (часть) для поиска: ");
+                    string query = Console.ReadLine().Trim().ToLower();
+                    filteredList = items.Where(i => i.Name.ToLower().Contains(query)).ToList();
+                    if (filteredList?.Count == 0)
+                    {
+                        Console.WriteLine("Предмет не найден");
+                    }
+                    break;
+                case "2":
+                    Console.WriteLine("Введите максимальную стоимость: ");
+                    if (int.TryParse(Console.ReadLine(), out int maxCost))
+                    {
+                        filteredList = items.Where(i => i.Cost <= maxCost).ToList();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Неккоректное число");
+                        return;
+                    }
+                    break;
+                default:
+                    Console.WriteLine("Некорректный ввод");
+                    break;
+            }
+
+            PrintTable(filteredList);
         }
         
         
